@@ -52,7 +52,7 @@ class Profile(TimeStampedModel):
         blank=False,
         null=False
     )
-    prfile_photo = models.ImageField(
+    profile_photo = models.ImageField(
         verbose_name=_("profile photo"),
         default="/profile_default.png"
     )
@@ -61,7 +61,7 @@ class Profile(TimeStampedModel):
         max_length=20,
         blank=True
     )
-    flowwers = models.ManyToManyField(
+    followers = models.ManyToManyField(
         "self",
         symmetrical=False,
         related_name="following",
