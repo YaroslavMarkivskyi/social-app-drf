@@ -28,8 +28,12 @@ class ArticleSerializer(serializers.ModelSerializer):
     estimated_reading_time = serializers.ReadOnlyField()
     tags = TagListField()
     views = serializers.SerializerMethodField()
+    avarage_rating = serializers.ReadOnlyField()
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
+
+    def get_avarage_rating(self, obj):
+        return obj.avarage_rating()
 
     def get_views(self, obj):
         return ArticleView.objects.filter(article=obj).count()
@@ -80,6 +84,7 @@ class ArticleSerializer(serializers.ModelSerializer):
             "description",
             "body",
             "banner_image",
+            "avarage_rating",
             "created_at",
             "updated_at"
             ]
