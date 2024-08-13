@@ -2,7 +2,6 @@ from django import forms
 from django.contrib.auth import forms as admin_forms
 from django.contrib.auth import get_user_model
 
-
 User = get_user_model()
 
 
@@ -16,9 +15,7 @@ class UserCreationForm(admin_forms.UserCreationForm):
         model = User
         fields = ("first_name", "last_name", "email")
 
-    error_massages = {
-        "dublicate_email": "A user with this email already exists."
-    }
+    error_massages = {"dublicate_email": "A user with this email already exists."}
 
     def clean_email(self):
         email = self.cleaned_data["email"]

@@ -7,18 +7,24 @@ from .models import User
 
 
 class UserAdmin(BaseUserAdmin):
-    ordering = ['email']
+    ordering = ["email"]
     form = UserChangeForm
     add_form = UserCreationForm
     model = User
 
-    list_display = ["pkid", "id", "email", "first_name", "last_name", "is_staff", "is_active"]
+    list_display = [
+        "pkid",
+        "id",
+        "email",
+        "first_name",
+        "last_name",
+        "is_staff",
+        "is_active",
+    ]
 
     list_display_links = ["pkid", "id", "email"]
 
-    list_filter = [
-        "email", "is_staff", "is_active"
-    ]
+    list_filter = ["email", "is_staff", "is_active"]
 
     fieldsets = (
         (_("Login Credentials"), {"fields": ("email", "password")}),
@@ -31,16 +37,16 @@ class UserAdmin(BaseUserAdmin):
                     "is_staff",
                     "is_superuser",
                     "groups",
-                    "user_permissions"
-                    )
-                },
-            ),
+                    "user_permissions",
+                )
+            },
+        ),
         (_("Important Dates"), {"fields": ("last_login", "data_joined")}),
     )
 
     add_fieldsets = (
         None,
-         {
+        {
             "classes": ("wide"),
             "fields": ("email", "first_name", "last_name", "password1", "password2"),
         },
@@ -50,5 +56,3 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.register(User, UserAdmin)
-
-

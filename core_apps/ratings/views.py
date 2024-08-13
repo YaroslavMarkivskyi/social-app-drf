@@ -1,11 +1,12 @@
 from django.db import IntegrityError
 from rest_framework import generics, permissions
-
-from core_apps.ratings.exceptions import YouHaveAlreadyRated
-from .serializers import RatingSerializer
-from .models import Rating
-from core_apps.articles.models import Article
 from rest_framework.exceptions import ValidationError
+
+from core_apps.articles.models import Article
+from core_apps.ratings.exceptions import YouHaveAlreadyRated
+
+from .models import Rating
+from .serializers import RatingSerializer
 
 
 class RatingCreateView(generics.CreateAPIView):
@@ -14,7 +15,7 @@ class RatingCreateView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
-        article_id = self.kwargs.get('article_id')
+        article_id = self.kwargs.get("article_id")
         if article_id:
             try:
                 article = Article.objects.get(id=article_id)
@@ -24,6 +25,6 @@ class RatingCreateView(generics.CreateAPIView):
             raise ValidationError("article_id is required")
 
         try:
-            serializer.save(user = self.request.user, article=article)
+            serializer.save(user=self.request.user, article=article)
         except IntegrityError:
             raise YouHaveAlreadyRated

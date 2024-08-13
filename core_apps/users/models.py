@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 from .managers import CustomUserManager
 
+
 class User(AbstractBaseUser, PermissionsMixin):
     pkid = models.BigAutoField(primary_key=True, editable=False)
     id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
@@ -20,7 +21,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     data_joined = models.DateTimeField(default=timezone.now)
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = "email"
 
     REQUIRED_FIELDS = ["first_name", "last_name"]
 

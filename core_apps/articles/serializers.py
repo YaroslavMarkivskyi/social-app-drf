@@ -1,9 +1,9 @@
 from rest_framework import serializers
 
 from core_apps.articles.models import Article, ArticleView, Clap
-from core_apps.profiles.serializers import ProfileSerializer
 from core_apps.bookmarks.models import Bookmark
 from core_apps.bookmarks.serializers import BookmarkSerializer
+from core_apps.profiles.serializers import ProfileSerializer
 from core_apps.responses.serializers import ResponseSerializer
 
 
@@ -50,7 +50,7 @@ class ArticleSerializer(serializers.ModelSerializer):
         bookmarks = Bookmark.objects.filter(article=obj)
         return BookmarkSerializer(bookmarks, many=True).data
 
-    def get_bookmarks_count(self,obj):
+    def get_bookmarks_count(self, obj):
         return Bookmark.objects.filter(article=obj).count()
 
     def get_avarage_rating(self, obj):
@@ -83,10 +83,12 @@ class ArticleSerializer(serializers.ModelSerializer):
         instance.title = validated_data.get("title", instance.title)
         instance.description = validated_data.get("description", instance.description)
         instance.body = validated_data.get("body", instance.body)
-        instance.banner_image = validated_data.get("banner_image", instance.banner_image)
+        instance.banner_image = validated_data.get(
+            "banner_image", instance.banner_image
+        )
         instance.updated_at = validated_data.get("updated_at", instance.updated_at)
 
-        if 'tags' in validated_data:
+        if "tags" in validated_data:
             instance.tags.set(validated_data["tags"])
 
         instance.save()
@@ -113,7 +115,7 @@ class ArticleSerializer(serializers.ModelSerializer):
             "responses_count",
             "created_at",
             "updated_at",
-            ]
+        ]
 
 
 class ClapSerializer(serializers.ModelSerializer):

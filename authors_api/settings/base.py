@@ -1,5 +1,6 @@
-from pathlib import Path
 from datetime import timedelta
+from pathlib import Path
+
 import environ
 
 env = environ.Env()
@@ -192,7 +193,7 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": True,
     "SIGNING_KEY": env("SIGNING_KEY"),
     "USER_ID_FIELD": "id",
-    "USER_ID_CLAIM": "user_id"
+    "USER_ID_CLAIM": "user_id",
 }
 
 REST_AUTH = {
@@ -205,7 +206,6 @@ REST_AUTH = {
 AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
     "django.contrib.auth.backends.ModelBackend",
-
 ]
 
 ACCOUNT_AUTHENTICATION_METHOD = "email"
@@ -232,7 +232,7 @@ LOGGING = {
         }
     },
     "handlers": {
-        "console":{
+        "console": {
             "level": "DEBUG",
             "class": "logging.StreamHandler",
             "formatter": "verbose",
