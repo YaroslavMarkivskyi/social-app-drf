@@ -15,7 +15,7 @@ class UserCreationForm(admin_forms.UserCreationForm):
         model = User
         fields = ("first_name", "last_name", "email")
 
-    error_massages = {"dublicate_email": "A user with this email already exists."}
+    error_messages = {"duplicate_email": "A user with this email already exists."}
 
     def clean_email(self):
         email = self.cleaned_data["email"]
@@ -23,4 +23,4 @@ class UserCreationForm(admin_forms.UserCreationForm):
             User.objects.get(email=email)
         except User.DoesNotExist:
             return email
-        raise forms.ValidationError(self.error_messages["dublicate_email"])
+        raise forms.ValidationError(self.error_messages["duplicate_email"])
