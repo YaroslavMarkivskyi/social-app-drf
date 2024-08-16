@@ -25,36 +25,36 @@ This project is a modern social media platform built using Django Rest Framework
 - **Proxy:** Nginx
 
 ## 📂 URL Endpoints
-### Authentication & User Management
+#### Authentication & User Management
 - **User Details:** `/api/v1/auth/user/`
 - **Authentication:** `/api/v1/auth/`
 - **Registration:** `/api/v1/auth/registration/`
 - **Password Reset:** `/api/v1/auth/password/reset/confirm/<uidb64>/<token>/`
-### Profiles
+#### Profiles
 - **View All Profiles:** `/api/v1/profiles/all/`
 - **My Profile:** `/api/v1/profiles/me/`
 - **Update Profile:** `/api/v1/profiles/me/update/`
 - **Followers:** `/api/v1/profiles/me/followers/`
 - **Follow:** `/api/v1/profiles/<uuid:user_id>/follow/`
 - **Unfollow:** `/api/v1/profiles/<uuid:user_id>/unfollow/`
-### Articles
+#### Articles
 - **List & Create Articles:** `/api/v1/articles/`
 - **Retrieve, Update & Delete Article:** `/api/v1/articles/<uuid:id>/`
 - **Clap Article:** `/api/v1/articles/<uuid:article_id>/clap/`
-### Bookmarks
+#### Bookmarks
 - **Bookmark Article:** `/api/v1/bookmarks/bookmark_article/<uuid:article_id>/`
 - **Remove Bookmark:** `/api/v1/bookmarks/remove_bookmark/<uuid:article_id>/`
-### Ratings
+#### Ratings
 - **Rate Article:** `/api/v1/ratings/rate_article/<uuid:article_id>/`
-### Responses
+#### Responses
 - **View & Create Responses:** `/api/v1/responses/article/<uuid:article_id>/`
 - **Update & Delete Response:** `/api/v1/responses/<uuid:id>/`
-### Search
+#### Search
 - **Search Articles:** `/api/v1/elastic/search/`
-### API Documentation
+#### API Documentation
 - **Redoc Documentation:** `/redoc/`
 
-### 📦 Installation 
+## 📦 Installation 
 Clone the repository:
 ```bash
 git clone https://github.com/YaroslavMarkivskyi/social-media-app-drf.git
