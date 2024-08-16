@@ -54,7 +54,7 @@ This project is a modern social media platform built using Django Rest Framework
 ### API Documentation
 - **Redoc Documentation:** `/redoc/`
 
-### INSTALLATION 
+### 📦 Installation 
 Clone the repository:
 ```bash
 git clone https://github.com/YaroslavMarkivskyi/social-media-app-drf.git
